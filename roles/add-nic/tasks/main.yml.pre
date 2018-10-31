@@ -1,0 +1,19 @@
+- name: install req nmcli pkgs
+  yum:
+    name: '{{ item }}'
+    state: installed
+  with_items:
+    - NetworkManager-glib
+    - nm-connection-editor.x86_64
+    - libsemanage-python
+    - policycoreutils-python
+
+- name: nmcli add Ethernet - conn_name only & ip4 gw4
+  nmcli:
+    type: ethernet
+    conn_name: '{{ item.conn_name }}'
+    ip4: '{{ item.ip4 }}'
+    state: present
+  with_items:
+    - '{{ nmcli_ethernet }}'
+

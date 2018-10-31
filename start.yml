@@ -1,0 +1,6 @@
+- name: Configure instance(s)
+  hosts: storage
+  gather_facts: false
+  become: True
+  roles:
+    - add-nic

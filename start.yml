@@ -1,5 +1,7 @@
 - name: Configure instance(s)
-  hosts: storage
+  hosts: 
+  - osds
+  - mons
   gather_facts: false
   become: True
   roles:
